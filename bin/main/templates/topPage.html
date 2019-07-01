@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/css/topPage.css" th:href="@{/css/topPage.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.11.4/jquery-ui.min.css}" />
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/webjars/jquery-ui/1.11.4/jquery-ui.min.js"></script>
+    <title>ToDoList</title>
+  </head>
+  <body>
+    <div class="row_1">
+      <h1>ToDoList</h1>
+    </div>
+    <div class="row_2">
+      <p>新しいToDoを作成する</p>
+      <form method="post" th:action="@{/}" th:object="${TopPageForm}">
+        <table>
+          <tr>
+            <td>
+              <label>ToDo名</label>
+              <input type="text" th:field="*{toDoName}" size="80" maxlength="100" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>期限</label>
+              <input type="text" th:field="*{deadline}" size="80" maxlength="100" />
+            </td>
+          </tr>
+        </table>
+        <button type="submit">ToDoの追加</button>
+      </form>
+      <h2>結果</h2>
+      <p th:text="${TopPageForm.toDoName}" />
+      <p th:text="'期限 ' + ${TopPageForm.deadline}" /> 
+  </body>
+  <!-- <script>
+    $(function() {
+      $('add-button')
+        .button()
+        .on('click', function() {
+            alert('Add ToDoList');
+        });
+    });
+   </script> -->
+</html>
