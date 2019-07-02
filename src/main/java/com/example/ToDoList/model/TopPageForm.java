@@ -1,11 +1,9 @@
 package com.example.ToDoList.model;
 
-import java.io.Serializable;
-
 /*
   toDo名、期限データ
 */
-public class TopPageForm implements Serializable {
+public class TopPageForm {
 
   /*
    * toDoList名
@@ -16,6 +14,15 @@ public class TopPageForm implements Serializable {
    * 期限
    */
   private String deadline;
+
+  public TopPageForm(String toDoName, String deadline){
+    this.toDoName = toDoName;
+    this.deadline = deadline;
+  }
+
+  public TopPageForm(){
+    
+  }
 
   public String getToDoName(){
     return toDoName;
