@@ -12,7 +12,7 @@
     <div class="row_1">
       <h1 style="background-color: #99FFFF">ToDoList</h1>
     </div>
-    <div class="row_2" style="height: 150px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;">
+    <div class="row_2" style="height: 130px; width: 900px; background-color: white; margin-left:auto; margin-right:auto; padding-bottom: 20px;">
       <p>新しいToDoを作成する</p>
       <form method="post" th:action="@{/}" th:object="${TopPageForm}">
         <table>
@@ -36,14 +36,20 @@
       <p th:text="${TopPageForm.toDoName}" />
       <p th:text="'期限 ' + ${TopPageForm.deadline}" />
       -->
-      <div th:if="${todoList}" style="height: 120px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;">
-        <div th:each="todo: ${todoList}">
-          <p th:text="${todo.toDoName}"></p>
-          <p th:text="${todo.deadline}"></p>
+      <div th:if="${todoList}">
+        <div th:each="todo: ${todoList}" style="height: 120px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;">
+          <span th:text="${todo.toDoName}" style="margin-bottom: 0;"></span>
+          <br/>
+          期限：<span th:text="${todo.deadline}" style="margin-bottom: 0;"></span>
+          <br/>
+          作成日：<span th:text="${todo.date}" style="margin-bottom: 0;"></span>
+          <br/>
           <button type="submit">編集</button>
+          <br/>
           <button type="submit">未完了</button>
         </div> 
       </div>
+      <br/>
       <div th:unless="${todoList}">
         <p>登録されたToDoはございません</p>
       </div>

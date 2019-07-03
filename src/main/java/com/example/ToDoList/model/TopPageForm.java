@@ -1,5 +1,9 @@
 package com.example.ToDoList.model;
 
+import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+
 /*
   toDo名、期限データ
 */
@@ -15,9 +19,19 @@ public class TopPageForm {
    */
   private String deadline;
 
-  public TopPageForm(String toDoName, String deadline){
+  // 作成日
+  private String date;
+
+  // listID
+  private int id;
+
+  // 完了:true 未完了:false
+  private boolean status;
+
+  public TopPageForm(String toDoName, String deadline, String date){
     this.toDoName = toDoName;
     this.deadline = deadline;
+    this.date = date;
   }
 
   public TopPageForm(){
@@ -39,4 +53,27 @@ public class TopPageForm {
   public void setDeadline(String deadline){
     this.deadline = deadline;
   }
-}
+
+  public int getID(){
+    return id;
+  }
+
+  public void setID(int id) {
+    this.id = id;
+  }
+
+  public String getDate(){
+    //カレンダークラスのオブジェクトを生成する
+    Calendar cl = Calendar.getInstance();
+    //フォーマットを指定する
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss z");
+    //フォーマットをフォーマットを変更する
+    //sdf.applyPattern("yyy年MM月dd日");
+    date = sdf.format(cl.getTime()).toString();
+    return date;
+  }
+
+  public void setDate(String date){
+    this.date = date;
+  }
+} 

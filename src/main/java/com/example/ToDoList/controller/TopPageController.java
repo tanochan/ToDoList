@@ -2,6 +2,10 @@ package com.example.ToDoList.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,5 +46,15 @@ public class TopPageController {
     model.addAttribute("TopPageForm", form);
     model.addAttribute("todoList", todos);
     return "topPage";
+  }
+
+  /**
+   * 時刻の設定
+   * @return yyyy年MM月dd日
+   */
+  public String settingTime() {
+    Date date = new Date();
+    String str = String.valueOf(date);
+    return str;
   }
 }
