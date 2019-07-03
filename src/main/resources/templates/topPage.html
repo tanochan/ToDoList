@@ -46,7 +46,7 @@
           <br/>
           <button type="submit">編集</button>
           <br/>
-          <button type="submit">未完了</button>
+          <input type="button" id="switch" value="未完了" onclick="change()" />
         </div> 
       </div>
       <br/>
@@ -54,4 +54,16 @@
         <p>登録されたToDoはございません</p>
       </div>
   </body>
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    var elem = document.getElementById("switch");
+    function change(){
+      if(elem.value == "未完了"){
+        elem.value = "完了";
+      }else {
+        elem.value = "未完了";
+      }
+    }
+    /*]]>*/
+  </script>
 </html>
