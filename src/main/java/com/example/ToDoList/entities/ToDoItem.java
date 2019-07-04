@@ -73,14 +73,4 @@ public class ToDoItem {
   public void setCreated_at(String created_at){
     this.created_at = created_at;
   }
-
-  // public String settingCreated_at(){
-  //   //カレンダークラスのオブジェクトを生成する
-  //   Calendar cl = Calendar.getInstance();
-  //   //フォーマットを指定する
-  //   SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-  //   //フォーマットをフォーマットを変更する
-  //   //sdf.applyPattern("yyyy年MM月dd日");
-  //   return sdf.format(cl.getTime()).toString(); 
-  // }
 } 

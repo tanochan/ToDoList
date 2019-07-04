@@ -1,12 +1,8 @@
 package com.example.ToDoList.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +14,6 @@ import com.example.ToDoList.entities.ToDoItem;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.ToDoList.repositories.ToDoItemRepository;
-import com.example.ToDoList.form.ToDoItemForm;;
 
 /*
  * toDoList情報
@@ -29,17 +24,6 @@ public class TopPageController {
   @Autowired
   ToDoItemRepository repository;
 
-  //private List<ToDoItem> todos;
-
-  // public TopPageController() {
-  //   todos = new ArrayList<>();
-  // }
-
-  // private void addTodo(ToDoItem todo) {
-  //   todos.add(todo);
-  //   //このへんでDB操作
-  // }
-
   @RequestMapping(value="/", method=RequestMethod.GET)
   public String displayList(Model model){
     List<ToDoItem> toDoItems =repository.findAll();
@@ -49,9 +33,6 @@ public class TopPageController {
 
   @RequestMapping(value="/new", method=RequestMethod.POST)
   public String newItem(ToDoItem item) {
-      //item.setDone(false);
-      //item = new ToDoItem();
-      //item.setCreated_at(settingCreated_at());
       item.setCreated_at(settingCreated_at());
       this.repository.save(item);
       return "redirect:/";
