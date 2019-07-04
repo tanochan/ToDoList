@@ -6,13 +6,19 @@ import java.util.Arrays;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.ToDoList.entities.ToDoItem;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.ToDoList.repositories.ToDoItemRepository;
+import com.example.ToDoList.form.ToDoItemForm;;
 
 /*
  * toDoList情報
@@ -20,41 +26,44 @@ import com.example.ToDoList.entities.ToDoItem;
 @Controller
 public class TopPageController {
 
-  private List<ToDoItem> todos;
+  @Autowired
+  ToDoItemRepository repository;
 
-  public TopPageController() {
-    todos = new ArrayList<>();
-  }
+  //private List<ToDoItem> todos;
 
-  private void addTodo(ToDoItem todo) {
-    todos.add(todo);
-    //このへんでDB操作
-  }
+  // public TopPageController() {
+  //   todos = new ArrayList<>();
+  // }
+
+  // private void addTodo(ToDoItem todo) {
+  //   todos.add(todo);
+  //   //このへんでDB操作
+  // }
 
   @RequestMapping(value="/", method=RequestMethod.GET)
   public String displayList(Model model){
-    // 入力フォームで取り扱うオブジェクトを指定
-    model.addAttribute("ToDoItem", new ToDoItem());
-    model.addAttribute("todoList", todos);
+    List<ToDoItem> toDoItems =repository.findAll();
+    model.addAttribute("toDoItems", toDoItems);
     return "topPage";
   }
 
-  @RequestMapping(value="/", method=RequestMethod.POST)
-  public String createToDoList(@ModelAttribute ToDoItem todoitem, Model model) {
-    //topPageFormに入力フォームの内容が格納されている
-    this.addTodo(todoitem);
-    model.addAttribute("ToDoItem", todoitem);
-    model.addAttribute("todoList", todos);
-    return "topPage";
+  @RequestMapping(value="/new", method=RequestMethod.POST)
+  public String newItem(ToDoItem item) {
+      //item.setDone(false);
+      //item = new ToDoItem();
+      //item.setCreated_at(settingCreated_at());
+      item.setCreated_at(settingCreated_at());
+      this.repository.save(item);
+      return "redirect:/";
   }
 
-  /**
-   * 時刻の設定
-   * @return yyyy年MM月dd日
-   */
-  public String settingTime() {
-    Date date = new Date();
-    String str = String.valueOf(date);
-    return str;
+  public String settingCreated_at(){
+    //カレンダークラスのオブジェクトを生成する
+    Calendar cl = Calendar.getInstance();
+    //フォーマットを指定する
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    //フォーマットをフォーマットを変更する
+    //sdf.applyPattern("yyyy年MM月dd日");
+    return sdf.format(cl.getTime()).toString(); 
   }
 }

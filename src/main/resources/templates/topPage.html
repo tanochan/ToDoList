@@ -14,56 +14,54 @@
     </div>
     <div class="row_2" style="height: 130px; width: 900px; background-color: white; margin-left:auto; margin-right:auto; padding-bottom: 20px;">
       <p>新しいToDoを作成する</p>
-      <form method="post" th:action="@{/}" th:object="${ToDoItem}">
+      <form method="post" th:action="@{/new}">
         <table>
           <tr>
             <td>
               <label>ToDo名</label>
-              <input type="text" th:field="*{toDoName}" value="" size="80" maxlength="100" />
+              <input type="text" name="toDoName" size="80" maxlength="100" />
             </td>
           </tr>
           <tr>
             <td>
               <label>期限</label>
-              <input type="text" th:field="*{deadline}" value="" size="80" maxlength="100" />
+              <input type="text" name="deadline" size="80" maxlength="100" />
             </td>
           </tr>
         </table>
+        <!-- <input type="hidden" name="created_at" id="date" /> -->
         <button type="submit">ToDoの追加</button>
       </form>
     </div>
-      <!--
-      <p th:text="${TopPageForm.toDoName}" />
-      <p th:text="'期限 ' + ${TopPageForm.deadline}" />
-      -->
-      <div th:if="${todoList}">
-        <div th:each="todo: ${todoList}" style="height: 120px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;">
-          <span th:text="${todo.toDoName}" style="margin-bottom: 0;"></span>
+        <div th:each="item: ${toDoItems}" style="height: 120px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;">
+          <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
           <br/>
-          期限：<span th:text="${todo.deadline}" style="margin-bottom: 0;"></span>
+          期限：<span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
           <br/>
-          作成日：<span th:text="${todo.date}" style="margin-bottom: 0;"></span>
+          作成日：<span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
           <br/>
-          <button type="submit">編集</button>
-          <br/>
-          <input type="button" id="switch" value="未完了" onclick="change()" />
-        </div> 
-      </div>
+          <!-- <form> -->
+            <input type="hidden" name="id" value="*{id}" />
+            <button type="submit">編集</button>
+            <br/>
+            <input type="button" id="switch" value="未完了" />
+          <!-- </form> -->
+       </div>
       <br/>
-      <div th:unless="${todoList}">
+      <!-- <div th:unless="${todoList}">
         <p>登録されたToDoはございません</p>
-      </div>
+      </div> -->
   </body>
-  <script th:inline="javascript">
+  <!-- <script th:inline="javascript">
     /*<![CDATA[*/
-    var elem = document.getElementById("switch");
-    function change(){
-      if(elem.value == "未完了"){
-        elem.value = "完了";
-      }else {
-        elem.value = "未完了";
-      }
+    var date = $('.date').val();
+    function getCreated_at(){
+      var dt = new Date();
+      var y = dt.getFullYear();
+      var m = ("00" + (dt.getMonth()+1)).slice(-2);
+      var d = ("00" + dt.getDate()).slice(-2);
+      date = y + "/" + m + "/" + d;
     }
     /*]]>*/
-  </script>
+  </script> -->
 </html>

@@ -1,49 +1,53 @@
 package com.example.ToDoList.entities;
 
 import java.util.Date;
-import java.util.Calendar;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
-/*
-  toDo名、期限データ
-*/
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+
+/**
+ * リレーショナルデータベースで管理されているレコードを表現するJavaクラス
+ */
+@Entity
+@Table(name="todoitems")
 public class ToDoItem {
-
-  /*
-   * toDoList名
-   */
-  private String toDoName;
-
-  /*
-   * 期限
-   */
-  private String deadline;
-
-  // 作成日
-  private String date;
-
-  // listID
+  @Id
+  @Column(name="id")
+  @GeneratedValue(strategy=GenerationType.IDENTITY) // primary key生成
   private int id;
+  @Column(name="todo_name")
+  private String todo_name; 
+  @Column(name="deadline")
+  private String deadline;
+  @Column(name="status")
+  private boolean status; // true:完了 false:未完了 
+  @Column(name="created_at")
+  private String created_at;
+  @Column(name="updated_at")
+  private Date ipdated_at;
 
-  // 完了:true 未完了:false
-  private boolean status;
-
-  public ToDoItem(String toDoName, String deadline, String date){
-    this.toDoName = toDoName;
-    this.deadline = deadline;
-    this.date = date;
+  public int getId(){
+    return id;
   }
 
-  public ToDoItem(){
-    
+  public void setId(int id){
+    this.id = id;
   }
 
   public String getToDoName(){
-    return toDoName;
+    return todo_name;
   }
 
-  public void setToDoName(String toDoName){
-    this.toDoName = toDoName;
+  public void setToDoName(String todo_name){
+    this.todo_name = todo_name;
   }
 
   public String getDeadline(){
@@ -54,26 +58,29 @@ public class ToDoItem {
     this.deadline = deadline;
   }
 
-  public int getID(){
-    return id;
+  public Boolean getStatus(){
+    return status;
   }
 
-  public void setID(int id) {
-    this.id = id;
+  public void setStatus(boolean status){
+    this.status = status;
   }
 
-  public String getDate(){
-    //カレンダークラスのオブジェクトを生成する
-    Calendar cl = Calendar.getInstance();
-    //フォーマットを指定する
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss z");
-    //フォーマットをフォーマットを変更する
-    //sdf.applyPattern("yyy年MM月dd日");
-    date = sdf.format(cl.getTime()).toString();
-    return date;
+  public String getCreated_at(){
+    return created_at;
   }
 
-  public void setDate(String date){
-    this.date = date;
+  public void setCreated_at(String created_at){
+    this.created_at = created_at;
   }
+
+  // public String settingCreated_at(){
+  //   //カレンダークラスのオブジェクトを生成する
+  //   Calendar cl = Calendar.getInstance();
+  //   //フォーマットを指定する
+  //   SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+  //   //フォーマットをフォーマットを変更する
+  //   //sdf.applyPattern("yyyy年MM月dd日");
+  //   return sdf.format(cl.getTime()).toString(); 
+  // }
 } 
