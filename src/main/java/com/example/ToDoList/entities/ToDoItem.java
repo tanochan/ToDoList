@@ -1,4 +1,4 @@
-package com.example.ToDoList.model;
+package com.example.ToDoList.entities;
 
 import java.util.Date;
 import java.util.Calendar;
@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 /*
   toDo名、期限データ
 */
-public class TopPageForm {
+public class ToDoItem {
 
   /*
    * toDoList名
@@ -28,13 +28,13 @@ public class TopPageForm {
   // 完了:true 未完了:false
   private boolean status;
 
-  public TopPageForm(String toDoName, String deadline, String date){
+  public ToDoItem(String toDoName, String deadline, String date){
     this.toDoName = toDoName;
     this.deadline = deadline;
     this.date = date;
   }
 
-  public TopPageForm(){
+  public ToDoItem(){
     
   }
 

@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.example.ToDoList.model.TopPageForm;
+import com.example.ToDoList.entities.ToDoItem;
 
 /*
  * toDoList情報
@@ -20,13 +20,13 @@ import com.example.ToDoList.model.TopPageForm;
 @Controller
 public class TopPageController {
 
-  private List<TopPageForm> todos;
+  private List<ToDoItem> todos;
 
   public TopPageController() {
     todos = new ArrayList<>();
   }
 
-  private void addTodo(TopPageForm todo) {
+  private void addTodo(ToDoItem todo) {
     todos.add(todo);
     //このへんでDB操作
   }
@@ -34,16 +34,16 @@ public class TopPageController {
   @RequestMapping(value="/", method=RequestMethod.GET)
   public String displayList(Model model){
     // 入力フォームで取り扱うオブジェクトを指定
-    model.addAttribute("TopPageForm", new TopPageForm());
+    model.addAttribute("ToDoItem", new ToDoItem());
     model.addAttribute("todoList", todos);
     return "topPage";
   }
 
   @RequestMapping(value="/", method=RequestMethod.POST)
-  public String createToDoList(@ModelAttribute TopPageForm form, Model model) {
+  public String createToDoList(@ModelAttribute ToDoItem todoitem, Model model) {
     //topPageFormに入力フォームの内容が格納されている
-    this.addTodo(form);
-    model.addAttribute("TopPageForm", form);
+    this.addTodo(todoitem);
+    model.addAttribute("ToDoItem", todoitem);
     model.addAttribute("todoList", todos);
     return "topPage";
   }
