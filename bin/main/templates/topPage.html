@@ -32,19 +32,19 @@
         <button type="submit">ToDoの追加</button>
       </form>
     </div>
-        <div th:each="item: ${toDoItems}" style="height: 120px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;">
+        <div th:each="item: ${toDoItems}" style="height: 140px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;">
+          <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p>
           <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
           <br/>
           期限：<span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
           <br/>
           作成日：<span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
           <br/>
-          <!-- <form> -->
-            <input type="hidden" name="id" value="*{id}" />
-            <button type="submit">編集</button>
+          <form method="post" th:action="@{/edit}" th:Object="${editPage}">
+            <button type="submit" name="id" th:value="${item.id}" style="margin-bottom: 0;">編集</button>
+          </form>
             <br/>
             <input type="button" id="switch" value="未完了" />
-          <!-- </form> -->
        </div>
       <br/>
       <!-- <div th:unless="${todoList}">

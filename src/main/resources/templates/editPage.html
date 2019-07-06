@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" style="width: 1000px; margin-left:auto; margin-right:auto;">
+  <head>
+    <meat charset="UTF-8" />
+    <title>Edit</title>
+  </head>
+  <body>
+    <!-- <div th:each="item: ${toDoItem}" style="height: 140px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;"> -->
+      <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p>
+      <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
+      <br/>
+      期限：<span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
+      <br/>
+      作成日：<span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
+      <br/> -->
+   <!-- </div> -->
+   <span th:text="${toDoItem.toDoName}" style="margin-bottom: 0;"></span>
+  </body>
+</html>

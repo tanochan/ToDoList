@@ -3,6 +3,7 @@ package com.example.ToDoList.controller;
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.example.ToDoList.entities.ToDoItem;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.example.ToDoList.entities.ToDoItem;
 
 import com.example.ToDoList.repositories.ToDoItemRepository;
+import com.example.ToDoList.service.ToDoItemService;
 
 /*
  * toDoList情報
@@ -22,11 +24,11 @@ import com.example.ToDoList.repositories.ToDoItemRepository;
 public class TopPageController {
 
   @Autowired
-  ToDoItemRepository repository;
+  ToDoItemService toDoItemService;
 
   @RequestMapping(value="/", method=RequestMethod.GET)
   public String displayList(Model model){
-    List<ToDoItem> toDoItems =repository.findAll();
+    List<ToDoItem> toDoItems = this.toDoItemService.findAll();
     model.addAttribute("toDoItems", toDoItems);
     return "topPage";
   }
@@ -34,8 +36,16 @@ public class TopPageController {
   @RequestMapping(value="/new", method=RequestMethod.POST)
   public String newItem(ToDoItem item) {
       item.setCreated_at(settingCreated_at());
-      this.repository.save(item);
+      this.toDoItemService.save(item);
       return "redirect:/";
+  }
+
+  //編集ボタンクリック時
+  @RequestMapping(value="/edit", method=RequestMethod.POST)
+  public String editCard(@RequestParam("id") Integer id, Model model){
+    ToDoItem item = this.toDoItemService.findById(id);
+    model.addAttribute("toDoItem", item);
+    return "editPage";
   }
 
   public String settingCreated_at(){
