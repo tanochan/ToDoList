@@ -31,10 +31,16 @@ public class TopPageController {
   // protected ResourceLoader resourceLoader;
 
   @RequestMapping(value="/", method=RequestMethod.GET)
-  public String displayList(Model model){
+  public String displayList(Model model) {
     List<ToDoItem> toDoItems = this.toDoItemService.findAll();
     model.addAttribute("toDoItems", toDoItems);
     return "topPage";
+  }
+
+  // 検索画面
+  @RequestMapping(value="/search", method=RequestMethod.GET)
+  public String searchView(Model model) {
+    return "searchPage";
   }
 
   // todoの追加ボタンクリック時
