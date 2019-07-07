@@ -63,8 +63,23 @@ public class TopPageController {
     return "redirect:/";
   }
 
-  // 完了・未完了のボタンクリック時
+  // 未完了のボタンクリック時
+  @RequestMapping(value="/switch/complete", method=RequestMethod.POST)
+  public String switchComplete(@RequestParam("id") Integer id, @ModelAttribute ToDoItem toDoItem) {
+    toDoItem = this.toDoItemService.findById(id);
+    toDoItem.setStatus(true);
+    toDoItemService.save(toDoItem);
+    return "redirect:/";
+  }
 
+  // 完了のボタンクリック時
+  @RequestMapping(value="/switch/incomplete", method=RequestMethod.POST)
+  public String switchIncomplete(@RequestParam("id") Integer id, @ModelAttribute ToDoItem toDoItem) {
+    toDoItem = this.toDoItemService.findById(id);
+    toDoItem.setStatus(false);
+    toDoItemService.save(toDoItem);
+    return "redirect:/";
+  }
 
   public String settingCreated_at(){
     //カレンダークラスのオブジェクトを生成する
