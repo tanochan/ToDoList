@@ -3,15 +3,22 @@
     xmlns:th="http://www.thymeleaf.org"
     >
   <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
     <meta name="description" content="common-meta">
   </head>
   <body>
     <div th:fragment="header">
       <div class="header_area">
-        <a href="/" style="text-decoration:none;">
-          <h1>TODOリスト</h1>
-        </a>
+        <div class="title_area">
+          <a href="/" style="text-decoration:none;">
+            <p class="title">TODOリスト</p>
+          </a>
+        </div>
+        <div class=search_area>
+          <a href="./searchPage.html">
+            <p class="search">検索</p>
+          </a>
+        </div>
       </div>
     </div>
   </body>

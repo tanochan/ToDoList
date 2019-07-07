@@ -1,13 +1,29 @@
 .header_area {
-  vertical-align: middle;
   margin-left: auto;
   margin-right: auto;
   background-color: #CCCCFF;
-  height: 60px;
+  height: 70px;
   margin-bottom: 20px;
+  padding-bottom: 40px;
 }
 
-h1 {
-  font-size: 30px;
+.title_area {
+  float: left;
+}
+
+.title {
+  font-size: 37px;
   color: black;
+  font-weight: bold;
+}
+
+.search_area {
+  float: right;
+  padding-right: 50px;
+}
+
+.search {
+  font-size: 37px;
+  color: green;
+  font-weight: bold;
 }
