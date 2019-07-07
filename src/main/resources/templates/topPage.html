@@ -43,19 +43,26 @@
           <div class="details_area">
             <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
             <br/>
-            期限：<span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
+            <label>期限：</label><span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
             <br/>
-            作成日：<span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
+            <label>作成日：</label><span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
             <br/>
           </div>
-          <div class="deadline_area">
+          <div class="edit_area">
             <form method="post" th:action="@{/edit}" th:Object="${editPage}">
               <button type="submit" name="id" th:value="${item.id}" class="edit_button">編集</button>
             </form>
           </div>
-          <div class="status_area">
-            <input type="button" id="switch" value="未完了" class="status_button"/>
-          </div>
+          <form method="post" th:action="@{/switch}" style="display: inline-block;">
+            <div th:switch="${item.status}" class="status_area">
+              <div　class="status_button" th:case="true">
+                <button type="button" id="switch" th:value="${item.status}" class="status_button" style="background-color: #9999FF;">完了</button>
+              </div>
+              <div class="status_button" th:case="false">
+                <button type="button" id="switch" th:value="${item.status}" class="status_button" style="background-color: #FF99CC;">未完了</button>
+              </div>
+            </div>
+          </form>
        </div>
       <br/>
       <!-- <div th:unless="${todoList}">

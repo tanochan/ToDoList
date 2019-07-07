@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{commons/header}"
-    style="width: 1000px; margin-left:auto; margin-right:auto;">
+    >
   <head>
-    <meat charset="UTF-8" />
+      <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+    <link media="all" th:href="@{/css/editPage.css}" rel="stylesheet" />
+    <link media="all" th:href="@{/css/header.css}" rel="stylesheet" />
     <title>Edit</title>
   </head>
   <body>
-    <div layout:fragment="header"></div>
-    <!-- <div th:each="item: ${toDoItem}" style="height: 140px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;"> -->
-      <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p>
-      <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
-      <br/>
-      期限：<span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
-      <br/>
-      作成日：<span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
-      <br/> -->
-   <!-- </div> -->
-   <span th:text="${toDoItem.toDoName}" style="margin-bottom: 0;"></span>
+      <div th:replace="commons/header.html::header"></div>
+      <div class="edit_area">
+        <p>ToDoの内容を変更します</p>
+        <form method="post" th:action="@{/update}" th:Object="${topPage}">
+        <div class="input_area">
+          <!-- <p th:text="${toDoItem.id}"></p> -->
+          <table class="main">
+            <tr>
+              <td>
+                <label>ToDo名</label>
+                <input type="text" name="toDoName" th:value="${toDoItem.toDoName}" size="80" maxlength="100" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>期限</label>
+                <input type="text" name="deadline" th:value="${toDoItem.deadline}" size="80" maxlength="100" />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="button_area">
+          <button type="submit" name="id" th:value="${toDoItem.id}" class="update_button">ToDoの追加</button>
+        </div>
+        </form>
+      </div>
   </body>
 </html>

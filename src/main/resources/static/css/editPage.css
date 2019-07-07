@@ -1,0 +1,40 @@
+html {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #EEEEEE;
+}
+
+.edit_area {
+  height: 140px;
+  width: 800px;
+  background-color: white;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 30px 50px 5px 50px;
+}
+
+.input_area {
+  height: 80px;
+  width: 75%;
+  display: inline-block;
+}
+
+table.main label {
+  display: inline-block;
+  width: 80px;
+  margin-bottom: 13px; 
+}
+
+.button_area {
+  float: right;
+  width: 25%;
+  display: inline-block;
+}
+
+.update_button {
+  width: 180px;
+  height: 80px;
+  font-size: 30px;
+  background-color: #CCCCFF;
+}

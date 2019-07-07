@@ -28,7 +28,7 @@ table.main label {
 
 .button_area {
   float: right;
-  width: 25%;
+  width: 23%;
   display: inline-block;
 }
 
@@ -44,7 +44,7 @@ table.main label {
   width: 800px;
   background-color: white;
   margin: 20px auto 20px auto;
-  padding: 5px 50px 5px 50px;
+  padding: 15px 50px 0px 50px;
 }
 
 .details_area {
@@ -53,14 +53,19 @@ table.main label {
   vertical-align: middle;
 }
 
-.deadline_area {
-  width: 23%;
+.details_area label {
+  display: inline-block;
+  width: 70px;
+}
+
+.edit_area {
+  width: 25%;
   display: inline-block;
   vertical-align: middle;
 }
 
 .status_area {
-  width: 23%;
+  width: 25%;
   display: inline-block;
   vertical-align: middle;
 }

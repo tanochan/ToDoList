@@ -32,28 +32,39 @@ public class TopPageController {
 
   @RequestMapping(value="/", method=RequestMethod.GET)
   public String displayList(Model model){
-    // String pathAndFile = "../css/topPage.css";
-    // Resource resource = resourceLoader.getResource("classpath:" + pathAndFile);
-    // model.addAttribute("resourceFileName",resource.getFilename());
     List<ToDoItem> toDoItems = this.toDoItemService.findAll();
     model.addAttribute("toDoItems", toDoItems);
     return "topPage";
   }
 
+  // todoの追加ボタンクリック時
   @RequestMapping(value="/new", method=RequestMethod.POST)
   public String newItem(ToDoItem item) {
       item.setCreated_at(settingCreated_at());
+      item.setStatus(false);
       this.toDoItemService.save(item);
       return "redirect:/";
   }
 
   //編集ボタンクリック時
   @RequestMapping(value="/edit", method=RequestMethod.POST)
-  public String editCard(@RequestParam("id") Integer id, Model model){
+  public String editCard(@RequestParam("id") Integer id, Model model) {
     ToDoItem item = this.toDoItemService.findById(id);
     model.addAttribute("toDoItem", item);
     return "editPage";
   }
+
+  // 更新ボタンクリック時
+  @RequestMapping(value="/update", method=RequestMethod.POST)
+  public String updateCard(@RequestParam("id") Integer id, @ModelAttribute ToDoItem toDoItem) {
+    toDoItem.setId(id);
+    toDoItem.setCreated_at(settingCreated_at());
+    toDoItemService.save(toDoItem);
+    return "redirect:/";
+  }
+
+  // 完了・未完了のボタンクリック時
+
 
   public String settingCreated_at(){
     //カレンダークラスのオブジェクトを生成する
