@@ -1,9 +1,85 @@
-.html {
-  background-color: darkgrey;
-  width : 750px;
+html {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #EEEEEE;
 }
 
-.h1 {
-  font-size: 18px;
-  background-color: darkcyan;
+.area_1 {
+  height: 140px;
+  width: 800px;
+  background-color: white;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 30px 50px 5px 50px;
 }
+
+.input_area {
+  height: 80px;
+  width: 75%;
+  display: inline-block;
+}
+
+table.main label {
+  display: inline-block;
+  width: 80px;
+  margin-bottom: 13px; 
+}
+
+.button_area {
+  float: right;
+  width: 25%;
+  display: inline-block;
+}
+
+.add_button {
+  width: 180px;
+  height: 80px;
+  font-size: 30px;
+  background-color: #CCCCFF;
+}
+
+.list_area {
+  height: 100px;
+  width: 800px;
+  background-color: white;
+  margin: 20px auto 20px auto;
+  padding: 5px 50px 5px 50px;
+}
+
+.details_area {
+  display: inline-block;
+  width: 50%;
+  vertical-align: middle;
+}
+
+.deadline_area {
+  width: 23%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.status_area {
+  width: 23%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.edit_button {
+  width: 180px;
+  height: 80px;
+  font-size: 30px;
+  background-color: #CCFFCC;
+}
+
+.status_button {
+  width: 180px;
+  height: 80px;
+  font-size: 30px;
+}
+
+h1 {
+  font-size: 18px;
+}
+
+

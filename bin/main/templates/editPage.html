@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" style="width: 1000px; margin-left:auto; margin-right:auto;">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{commons/header}"
+    style="width: 1000px; margin-left:auto; margin-right:auto;">
   <head>
     <meat charset="UTF-8" />
     <title>Edit</title>
   </head>
   <body>
+    <div layout:fragment="header"></div>
     <!-- <div th:each="item: ${toDoItem}" style="height: 140px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;"> -->
       <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p>
       <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" style="width: 1000px; margin-left:auto; margin-right:auto;">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{commons/header}"
+      style="width: 1000px; margin-left:auto; margin-right:auto;">
   <head>
     <meta charset="UTF-8" />
-    <link href="../css/topPage.css" th:href="@{/css/topPage.css}" rel="stylesheet" />
+    <link media="all" th:href="@{/css/topPage.css}" rel="stylesheet" />
     <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.11.4/jquery-ui.min.css}" />
     <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
     <script src="/webjars/jquery-ui/1.11.4/jquery-ui.min.js"></script>
     <title>ToDoList</title>
   </head>
-  <body style="background-color: #EEEEEE">
-    <div class="row_1">
-      <h1 style="background-color: #99FFFF">ToDoList</h1>
-    </div>
+  <body>
+    <div layout:fragment="header"></div>
     <div class="row_2" style="height: 130px; width: 900px; background-color: white; margin-left:auto; margin-right:auto; padding-bottom: 20px;">
       <p>新しいToDoを作成する</p>
       <form method="post" th:action="@{/new}">

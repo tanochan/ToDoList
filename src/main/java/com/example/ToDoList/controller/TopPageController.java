@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.example.ToDoList.entities.ToDoItem;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 
-import com.example.ToDoList.repositories.ToDoItemRepository;
+import com.example.ToDoList.entities.ToDoItem;
 import com.example.ToDoList.service.ToDoItemService;
 
 /*
@@ -26,8 +27,14 @@ public class TopPageController {
   @Autowired
   ToDoItemService toDoItemService;
 
+  // @Autowired
+  // protected ResourceLoader resourceLoader;
+
   @RequestMapping(value="/", method=RequestMethod.GET)
   public String displayList(Model model){
+    // String pathAndFile = "../css/topPage.css";
+    // Resource resource = resourceLoader.getResource("classpath:" + pathAndFile);
+    // model.addAttribute("resourceFileName",resource.getFilename());
     List<ToDoItem> toDoItems = this.toDoItemService.findAll();
     model.addAttribute("toDoItems", toDoItems);
     return "topPage";

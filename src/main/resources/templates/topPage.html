@@ -1,50 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" style="width: 1000px; margin-left:auto; margin-right:auto;">
+<html 
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  >
   <head>
-    <meta charset="UTF-8" />
-    <link href="../css/topPage.css" th:href="@{/css/topPage.css}" rel="stylesheet" />
-    <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.11.4/jquery-ui.min.css}" />
+    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+    <link media="all" th:href="@{/css/topPage.css}" rel="stylesheet" />
+    <link media="all" th:href="@{/css/header.css}" rel="stylesheet" />
+    <!-- <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.11.4/jquery-ui.min.css}" />
     <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/webjars/jquery-ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="/webjars/jquery-ui/1.11.4/jquery-ui.min.js"></script> -->
     <title>ToDoList</title>
   </head>
-  <body style="background-color: #EEEEEE">
-    <div class="row_1">
-      <h1 style="background-color: #99FFFF">ToDoList</h1>
-    </div>
-    <div class="row_2" style="height: 130px; width: 900px; background-color: white; margin-left:auto; margin-right:auto; padding-bottom: 20px;">
+  <body>
+    <div th:replace="commons/header.html::header"></div>
+    <div class="area_1">
       <p>新しいToDoを作成する</p>
       <form method="post" th:action="@{/new}">
-        <table>
-          <tr>
-            <td>
-              <label>ToDo名</label>
-              <input type="text" name="toDoName" size="80" maxlength="100" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label>期限</label>
-              <input type="text" name="deadline" size="80" maxlength="100" />
-            </td>
-          </tr>
-        </table>
-        <button type="submit">ToDoの追加</button>
+        <div class="input_area">
+          <table class="main">
+            <tr>
+              <td>
+                <label>ToDo名</label>
+                <input type="text" name="toDoName" size="80" maxlength="100" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>期限</label>
+                <input type="text" name="deadline" size="80" maxlength="100" />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="button_area">
+          <button type="submit" class="add_button">ToDoの追加</button>
+        </div>
       </form>
     </div>
-        <div th:each="item: ${toDoItems}" style="height: 140px; width: 900px; background-color: white; margin-left:auto; margin-right:auto;">
-          <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p>
-          <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
-          <br/>
-          期限：<span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
-          <br/>
-          作成日：<span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
-          <br/>
-          <form method="post" th:action="@{/edit}" th:Object="${editPage}">
-            <button type="submit" name="id" th:value="${item.id}" style="margin-bottom: 0;">編集</button>
-          </form>
+        <div class="list_area" th:each="item: ${toDoItems}">
+          <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p> -->
+          <div class="details_area">
+            <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
             <br/>
-            <input type="button" id="switch" value="未完了" />
+            期限：<span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
+            <br/>
+            作成日：<span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
+            <br/>
+          </div>
+          <div class="deadline_area">
+            <form method="post" th:action="@{/edit}" th:Object="${editPage}">
+              <button type="submit" name="id" th:value="${item.id}" class="edit_button">編集</button>
+            </form>
+          </div>
+          <div class="status_area">
+            <input type="button" id="switch" value="未完了" class="status_button"/>
+          </div>
        </div>
       <br/>
       <!-- <div th:unless="${todoList}">
