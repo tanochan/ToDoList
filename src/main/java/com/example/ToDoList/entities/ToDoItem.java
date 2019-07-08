@@ -1,15 +1,12 @@
 package com.example.ToDoList.entities;
 
 import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
@@ -30,7 +27,7 @@ public class ToDoItem {
   @Column(name="status")
   private boolean status; // true:完了 false:未完了 
   @Column(name="created_at")
-  private String created_at;
+  private Date created_at;
   @Column(name="updated_at")
   private Date ipdated_at;
 
@@ -66,11 +63,7 @@ public class ToDoItem {
     this.status = status;
   }
 
-  public String getCreated_at(){
+  public Date getCreated_at(){
     return created_at;
-  }
-
-  public void setCreated_at(String created_at){
-    this.created_at = created_at;
   }
 } 

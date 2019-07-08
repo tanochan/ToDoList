@@ -10,5 +10,27 @@
   </head>
   <body>
       <div th:replace="commons/header.html::header"></div>
+      <div class="search_area">
+        <form method="post" th:action="@{/searched}">
+          <div class="input_area">
+            <input type="text" name="search_name" style="width: 800px; height: 40px;" maxlength="100" />
+          </div>
+          <div class="button_area">
+            <button type="submit" class="search_button">検索</button>
+          </div>
+      </form>
+      </div>
+
+      <div class="list_area" th:each="item: ${toDoItems}">
+        <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p> -->
+        <div class="details_area">
+          <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
+          <br/>
+          <label>期限：</label><span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
+          <br/>
+          <label>作成日：</label><span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
+          <br/>
+        </div>
+      </div>
   </body>
 </html>

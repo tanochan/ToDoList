@@ -16,6 +16,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
 import com.example.ToDoList.entities.ToDoItem;
+import com.example.ToDoList.repositories.ToDoItemRepository;
 import com.example.ToDoList.service.ToDoItemService;
 
 /*
@@ -26,6 +27,9 @@ public class TopPageController {
 
   @Autowired
   ToDoItemService toDoItemService;
+
+  @Autowired
+  ToDoItemRepository repository;
 
   // @Autowired
   // protected ResourceLoader resourceLoader;
@@ -43,10 +47,17 @@ public class TopPageController {
     return "searchPage";
   }
 
+  @RequestMapping(value="/searched", method=RequestMethod.POST)
+  public String searchResult(@RequestParam("search_name") String name, Model model){
+    List<ToDoItem> toDoItem = this.repository.findSearchList(false, name);
+    model.addAttribute("toDoItem", toDoItem);
+    return "searchPage";
+  }
+
   // todoの追加ボタンクリック時
   @RequestMapping(value="/new", method=RequestMethod.POST)
   public String newItem(ToDoItem item) {
-      item.setCreated_at(settingCreated_at());
+      //item.setCreated_at(settingCreated_at());
       item.setStatus(false);
       this.toDoItemService.save(item);
       return "redirect:/";
@@ -64,7 +75,7 @@ public class TopPageController {
   @RequestMapping(value="/update", method=RequestMethod.POST)
   public String updateCard(@RequestParam("id") Integer id, @ModelAttribute ToDoItem toDoItem) {
     toDoItem.setId(id);
-    toDoItem.setCreated_at(settingCreated_at());
+    //toDoItem.setCreated_at(settingCreated_at());
     toDoItemService.save(toDoItem);
     return "redirect:/";
   }
@@ -85,15 +96,5 @@ public class TopPageController {
     toDoItem.setStatus(false);
     toDoItemService.save(toDoItem);
     return "redirect:/";
-  }
-
-  public String settingCreated_at(){
-    //カレンダークラスのオブジェクトを生成する
-    Calendar cl = Calendar.getInstance();
-    //フォーマットを指定する
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    //フォーマットをフォーマットを変更する
-    //sdf.applyPattern("yyyy年MM月dd日");
-    return sdf.format(cl.getTime()).toString(); 
   }
 }
