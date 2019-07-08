@@ -10,17 +10,24 @@
   </head>
   <body>
       <div th:replace="commons/header.html::header"></div>
-      <div class="search_area">
+      <div class="search">
         <form method="post" th:action="@{/searched}">
           <div class="input_area">
-            <input type="text" name="search_name" style="width: 800px; height: 40px;" maxlength="100" />
+            <input type="text" name="search_name" class="input_search" maxlength="100" />
           </div>
           <div class="button_area">
             <button type="submit" class="search_button">検索</button>
           </div>
       </form>
       </div>
-
+      <div style="height: 30px;" >
+        <!-- <div th:if="${num gt 0}">
+          <p>ToDoがN件見つかりました</p>
+        </div>
+        <div th:unless="${num gt 0}">
+          <p>対象のToDoは見つかりません</p>
+        </div> -->
+      </div>
       <div class="list_area" th:each="item: ${toDoItems}">
         <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p> -->
         <div class="details_area">

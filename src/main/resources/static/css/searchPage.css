@@ -5,6 +5,34 @@ html {
   background-color: #EEEEEE;
 }
 
-.search_area {
-  
+div.search {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+div.input_area {
+  display: inline-block;
+  width: 80%;
+  padding-bottom: 15px;
+}
+
+.input_search {
+  width: 700px;
+  height: 40px;
+  font-size: 30px;
+}
+
+div.button_area {
+  float: right;
+  width: 20%;
+}
+
+button.search_button {
+  width: 90px;
+  height: 47px;
+  font-size: 25px;
+  background-color: #C2EEFF;
 }

@@ -1,9 +1,7 @@
 package com.example.ToDoList.controller;
 
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Optional;
+import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.example.ToDoList.entities.ToDoItem;
 import com.example.ToDoList.repositories.ToDoItemRepository;
 import com.example.ToDoList.service.ToDoItemService;
+//import com.example.ToDoList.common.LogUtils;
 
 /*
  * toDoList情報
@@ -51,6 +50,7 @@ public class TopPageController {
   @RequestMapping(value="/searched", method=RequestMethod.POST)
   public String searchResult(@RequestParam("search_name") String name, Model model){
     List<ToDoItem> toDoItem = this.repository.findSearchList(false, name);
+    //LogUtils.info(toDoItem.getToDoName());
     model.addAttribute("toDoItem", toDoItem);
     return "searchPage";
   }
