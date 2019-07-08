@@ -36,7 +36,8 @@ public class TopPageController {
 
   @RequestMapping(value="/", method=RequestMethod.GET)
   public String displayList(Model model) {
-    List<ToDoItem> toDoItems = this.toDoItemService.findAll();
+    //List<ToDoItem> toDoItems = this.toDoItemService.findAll();
+    List<ToDoItem> toDoItems = this.repository.findAllOrderByDateAsc();
     model.addAttribute("toDoItems", toDoItems);
     return "topPage";
   }

@@ -22,4 +22,7 @@ public interface ToDoItemRepository extends JpaRepository<ToDoItem, Integer> {
   //@Query("from ToDoItem where todo_name lie %?1% and status = ?2 order by created_at asc")
   @Query("from ToDoItem where todo_name like %?1% and status = ?2 order by created_at asc")
   public List<ToDoItem> findSearchList(boolean status, String name);
+
+  @Query("FROM ToDoItem ORDER BY created_at DESC")
+  public List<ToDoItem> findAllOrderByDateAsc();
 }
