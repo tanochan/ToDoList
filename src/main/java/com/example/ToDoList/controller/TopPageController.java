@@ -1,7 +1,6 @@
 package com.example.ToDoList.controller;
 
 import java.util.List;
-import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 
 import com.example.ToDoList.entities.ToDoItem;
 import com.example.ToDoList.repositories.ToDoItemRepository;
@@ -59,13 +58,12 @@ public class TopPageController {
   // todoの追加ボタンクリック時
   @RequestMapping(value="/new", method=RequestMethod.POST)
   public String newItem(ToDoItem item) {
-      //item.setCreated_at(settingCreated_at());
       item.setStatus(false);
       this.toDoItemService.save(item);
       return "redirect:/";
   }
 
-  //編集ボタンクリック時
+  // 編集ボタンクリック時
   @RequestMapping(value="/edit", method=RequestMethod.POST)
   public String editCard(@RequestParam("id") Integer id, Model model) {
     ToDoItem item = this.toDoItemService.findById(id);

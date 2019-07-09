@@ -21,14 +21,14 @@
       </form>
       </div>
       <!-- <div style="height: 30px;">
-        <div th:if="${toDoItems.size()}" class="search_result">
+        <div th:if="${toDoItem.size()}" class="search_result">
           <p th:text="'ToDoが' + ${toDoItems.size()} + '件見つかりました'"></p>
         </div>
-        <div th:unless="${toDoItems.size()}" class="search_result">
+        <div th:unless="${toDoItem.size()}" class="search_result">
           <p>対象のToDoは見つかりません</p>
         </div>
       </div> -->
-      <div class="list_area" th:each="item: ${toDoItems}">
+      <div class="list_area" th:each="item: ${toDoItem}">
         <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p> -->
         <div class="details_area">
           <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
