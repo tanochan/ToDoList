@@ -37,9 +37,7 @@
       </div>
     </form>
   </div>
-  <!-- <div th:if="${todoList}"> -->
   <div class="list_area" th:each="item: ${toDoItems}">
-    <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p> -->
     <div class="details_area">
       <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
       <br />
@@ -68,7 +66,8 @@
       </div>
     </div>
   </div>
-  <!-- </div> -->
-  <!-- <p th:unless="${todoList}">登録されたToDoはございません</p> -->
+  <div th:unless="${toDoItems.size()}" class="nodata_area">
+    <p>登録されたToDoはございません</p>
+  </div>
 </body>
 </html>

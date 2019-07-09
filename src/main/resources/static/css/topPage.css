@@ -47,6 +47,16 @@ table.main label {
   padding: 15px 50px 0px 50px;
 }
 
+.nodata_area {
+  width: 900px;
+  margin: 20px auto 20px auto;
+}
+
+.nodata_area p {
+  font-weight: bold;
+  color: red;
+}
+
 .details_area {
   display: inline-block;
   width: 50%;
