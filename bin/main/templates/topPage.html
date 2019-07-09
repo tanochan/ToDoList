@@ -15,7 +15,7 @@
   <div th:replace="commons/header.html::header"></div>
   <div class="area_1">
     <p>新しいToDoを作成する</p>
-    <form method="post" th:action="@{/new}">
+    <form method="post" th:action="@{/new}" name="create_form">
       <div class="input_area">
         <table class="main">
           <tr>
@@ -33,7 +33,7 @@
         </table>
       </div>
       <div class="button_area">
-        <button type="submit" class="add_button">ToDoの追加</button>
+        <button type="submit" class="add_button" onclick="return checkFrom();">ToDoの追加</button>
       </div>
     </form>
   </div>
@@ -70,4 +70,19 @@
     <p>登録されたToDoはございません</p>
   </div>
 </body>
+  <script th:inline="javascript">
+  /*<![CDATA[*/
+  function checkForm(){
+    if(document.create_form.toDoName.value.length == 0){
+        window.alert("文字を入力してください");
+        return false;
+      }else if(31 <= document.create_form.toDoName.value.length){
+        window.alert("31文字以上を入力しないでください");
+        return false;
+      }else {
+        return true
+      }
+    }
+  /*]]>*/
+  </script>
 </html>

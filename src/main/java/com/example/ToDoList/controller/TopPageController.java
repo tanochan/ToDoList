@@ -97,4 +97,14 @@ public class TopPageController {
     toDoItemService.save(toDoItem);
     return "redirect:/";
   }
+
+  // 文字数チェック
+  public void check(ToDoItem toDoItem){
+    int word_count = toDoItem.getToDoName().length();
+    if(word_count == 0){
+
+    }else if(31 <= word_count){
+
+    }
+  }
 }

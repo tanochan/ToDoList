@@ -15,9 +15,7 @@ import com.example.ToDoList.entities.ToDoItem;
 @Repository
 public interface ToDoItemRepository extends JpaRepository<ToDoItem, Integer> {
 
-  // public List<ToDoItem> findByStatusAndTodoNameContainsOrderByCreatedAtAsc(String name);
-  //@Query("from ToDoItem where todo_name lie %?1% and status = ?2 order by created_at asc")
-  @Query("from ToDoItem where todo_name like %?1% and status = ?2 order by created_at asc")
+  @Query("from ToDoItem where todo_name like %?2% and status = ?1 order by created_at asc")
   public List<ToDoItem> findSearchList(boolean status, String name);
 
   @Query("FROM ToDoItem ORDER BY created_at DESC")
