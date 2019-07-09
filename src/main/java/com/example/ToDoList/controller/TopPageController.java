@@ -68,7 +68,7 @@ public class TopPageController {
   }
 
   // 更新ボタンクリック時
-  @RequestMapping(value="/update", method=RequestMethod.POST)
+  @RequestMapping(value="edit/update", method=RequestMethod.POST)
   public String updateTodo(@RequestParam("id") Integer id, @ModelAttribute ToDoItem toDoItem) {
     toDoItem.setId(id);
     //toDoItem.setCreated_at(settingCreated_at());

@@ -12,7 +12,7 @@
   <div th:replace="commons/header.html::header"></div>
   <div class="edit_area">
     <p>ToDoの内容を変更します</p>
-    <form method="post" th:action="@{/update}" name="create_form" th:Object="${topPage}">
+    <form method="post" th:action="@{edit/update}" name="create_form" th:Object="${topPage}">
       <div class="input_area">
         <table class="main">
           <tr>
