@@ -24,7 +24,7 @@
           <tr>
             <td>
               <label>期限</label>
-              <input type="text" name="deadline" th:value="${toDoItem.deadline}" size="80" maxlength="100" required/>
+              <input type="text" name="deadline" th:value="${toDoItem.deadline}" size="80" maxlength="100" required />
             </td>
           </tr>
         </table>
@@ -39,17 +39,18 @@
 </body>
 <script th:inline="javascript">
   /*<![CDATA[*/
-  function checkForm(){
-    if(document.create_form.toDoName.value.length == 0){
-        window.alert("文字を入力してください");
-        return false;
-      }else if(31 <= document.create_form.toDoName.value.length){
-        window.alert("31文字以上を入力しないでください");
-        return false;
-      }else {
-        return true
-      }
+  function checkForm() {
+    if (document.create_form.toDoName.value.length == 0) {
+      window.alert("文字を入力してください");
+      return false;
+    } else if (31 <= document.create_form.toDoName.value.length) {
+      window.alert("31文字以上を入力しないでください");
+      return false;
+    } else {
+      return true
     }
+  }
   /*]]>*/
-  </script>
+</script>
+
 </html>

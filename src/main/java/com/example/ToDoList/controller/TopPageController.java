@@ -62,7 +62,6 @@ public class TopPageController {
   public String newItem(ToDoItem toDoItem, Model model) {
     toDoItem.setStatus(false);
     toDoItemService.save(toDoItem);
-    // model.addAttribute("error","エラー");
     return "redirect:/";
   }
 
@@ -99,17 +98,5 @@ public class TopPageController {
     toDoItem.setStatus(false);
     toDoItemService.save(toDoItem);
     return "redirect:/";
-  }
-
-  // 文字数チェック
-  public String check(String name){
-    int word_count = name.length();
-    String err_messege = "";
-    if(word_count == 0){
-      err_messege = "文字を入力してください";
-    }else if(31 <= word_count){
-      err_messege = "31文字以上入力してください";
-    }
-    return err_messege;
   }
 }

@@ -15,9 +15,6 @@
   <div th:replace="commons/header.html::header"></div>
   <div class="area_1">
     <p>新しいToDoを作成する</p>
-    <!-- <div th:if="${error}"> -->
-      <!-- <p th:text="エラー"></p> -->
-    <!-- </div> -->
     <form method="post" th:action="@{/}" name="create_form">
       <div class="input_area">
         <table class="main">
@@ -30,7 +27,7 @@
           <tr>
             <td>
               <label>期限</label>
-              <input type="text" name="deadline" size="80" maxlength="100" required/>
+              <input type="text" name="deadline" size="80" maxlength="100" required />
             </td>
           </tr>
         </table>
@@ -47,7 +44,6 @@
       <label>期限：</label><span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
       <br />
       <label>作成日：</label><span th:text="${#dates.format(item.created_at, 'yyyy年MM月dd日')}" style="margin-bottom: 0;"></span>
-      <br />
     </div>
     <div class="edit_area">
       <form method="post" th:action="@{/edit}" th:Object="${editPage}">
@@ -74,15 +70,15 @@
   </div>
 </body>
   <script th:inline="javascript">
-  /*<![CDATA[*/
-  function checkForm(){
-    if(document.create_form.toDoName.value.length == 0){
+    /*<![CDATA[*/
+    function checkForm() {
+      if (document.create_form.toDoName.value.length == 0) {
         window.alert("文字を入力してください");
         return false;
-      }else if(31 <= document.create_form.toDoName.value.length){
+      } else if (31 <= document.create_form.toDoName.value.length) {
         window.alert("31文字以上を入力しないでください");
         return false;
-      }else {
+      } else {
         return true
       }
     }

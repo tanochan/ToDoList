@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html 
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
-    <link media="all" th:href="@{/css/searchPage.css}" rel="stylesheet" />
-    <link media="all" th:href="@{/css/header.css}" rel="stylesheet" />
-    <title>検索画面</title>
-  </head>
-  <body>
-      <div th:replace="commons/header.html::header"></div>
-      <div class="search">
-        <form method="post" th:action="@{/searched}">
-          <div class="input_area">
-            <input type="text" name="search_name" class="input_search" maxlength="100" />
-          </div>
-          <div class="button_area">
-            <button type="submit" class="search_button">検索</button>
-          </div>
-        </form>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+  <link media="all" th:href="@{/css/searchPage.css}" rel="stylesheet" />
+  <link media="all" th:href="@{/css/header.css}" rel="stylesheet" />
+  <title>検索画面</title>
+</head>
+
+<body>
+  <div th:replace="commons/header.html::header"></div>
+  <div class="search">
+    <form method="post" th:action="@{/searched}">
+      <div class="input_area">
+        <input type="text" name="search_name" class="input_search" maxlength="100" required />
       </div>
-      <div style="height: 30px;" th:if="${toDoItem}">
-        <div th:if="${toDoItem.size()}" class="search_result">
-          <p th:text="'ToDoが' + ${toDoItem.size()} + '件見つかりました'"></p>
-        </div>
-        <div th:unless="${toDoItem.size()}" class="search_result">
-          <p>対象のToDoは見つかりません</p>
-        </div>
+      <div class="button_area">
+        <button type="submit" class="search_button">検索</button>
       </div>
-      <div class="list_area" th:each="item: ${toDoItem}">
-        <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p> -->
-        <div class="details_area">
-          <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
-          <br/>
-          <label>期限：</label><span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
-          <br/>
-          <label>作成日：</label><span th:text="${#dates.format(item.created_at, 'yyyy年MM月dd日')}" style="margin-bottom: 0;"></span>
-          <br/>
+    </form>
+  </div>
+  <div style="height: 30px;" th:if="${toDoItem}">
+    <div th:if="${toDoItem.size()}" class="search_result">
+      <p th:text="'ToDoが' + ${toDoItem.size()} + '件見つかりました'"></p>
+    </div>
+    <div th:unless="${toDoItem.size()}" class="search_result">
+      <p>対象のToDoは見つかりません</p>
+    </div>
+  </div>
+  <div class="list_area" th:each="item: ${toDoItem}">
+    <div class="details_area">
+      <span th:text="${item.toDoName}" style="margin-bottom: 0;"></span>
+      <br />
+      <label>期限：</label><span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
+      <br />
+      <label>作成日：</label><span th:text="${#dates.format(item.created_at, 'yyyy年MM月dd日')}" style="margin-bottom: 0;"></span>
         </div>
         <div class="edit_area">
           <form method="post" th:action="@{/edit}" th:Object="${editPage}">
