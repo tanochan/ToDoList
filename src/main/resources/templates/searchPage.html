@@ -18,15 +18,15 @@
           <div class="button_area">
             <button type="submit" class="search_button">検索</button>
           </div>
-      </form>
+        </form>
       </div>
-      <div style="height: 30px;">
-        <!-- <div th:if="${toDoItem.size()}" class="search_result">
-          <p th:text="'ToDoが' + ${toDoItems.size()} + '件見つかりました'"></p>
-        </div> -->
-        <!-- <div th:unless="${toDoItem.size()}" class="search_result">
+      <div style="height: 30px;" th:if="${toDoItem}">
+        <div th:if="${toDoItem.size()}" class="search_result">
+          <p th:text="'ToDoが' + ${toDoItem.size()} + '件見つかりました'"></p>
+        </div>
+        <div th:unless="${toDoItem.size()}" class="search_result">
           <p>対象のToDoは見つかりません</p>
-        </div> -->
+        </div>
       </div>
       <div class="list_area" th:each="item: ${toDoItem}">
         <!-- <p type="text" name="id" th:text="${item.id}" style="margin-bottom: 0;"></p> -->
@@ -37,6 +37,25 @@
           <br/>
           <label>作成日：</label><span th:text="${#dates.format(item.created_at, 'yyyy年MM月dd日')}" style="margin-bottom: 0;"></span>
           <br/>
+        </div>
+        <div class="edit_area">
+          <form method="post" th:action="@{/edit}" th:Object="${editPage}">
+            <button type="submit" name="id" th:value="${item.id}" class="edit_button">編集</button>
+          </form>
+        </div>
+        <div th:switch="${item.status}" class="status_area">
+          <div　class="status_button" th:case="true">
+            <form method="post" th:action="@{/switch/incomplete}" style="display: inline-block;" th:Object="${topPage}">
+              <button type="submit" name="id" th:value="${item.id}" class="status_button"
+                style="background-color: #9999FF;">完了</button>
+            </form>
+          </div>
+          <div class="status_button" th:case="false">
+            <form method="post" th:action="@{/switch/complete}" style="display: inline-block;" th:Object="${topPage}">
+              <button type="submit" name="id" th:value="${item.id}" class="status_button"
+                style="background-color: #FF99CC;">未完了</button>
+            </form>
+          </div>
         </div>
       </div>
   </body>
