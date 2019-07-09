@@ -15,7 +15,10 @@
   <div th:replace="commons/header.html::header"></div>
   <div class="area_1">
     <p>新しいToDoを作成する</p>
-    <form method="post" th:action="@{/new}" name="create_form">
+    <!-- <div th:if="${error}"> -->
+      <!-- <p th:text="エラー"></p> -->
+    <!-- </div> -->
+    <form method="post" th:action="@{/}" name="create_form">
       <div class="input_area">
         <table class="main">
           <tr>
@@ -27,13 +30,13 @@
           <tr>
             <td>
               <label>期限</label>
-              <input type="text" name="deadline" size="80" maxlength="100" />
+              <input type="text" name="deadline" size="80" maxlength="100" required/>
             </td>
           </tr>
         </table>
       </div>
       <div class="button_area">
-        <button type="submit" class="add_button" onclick="return checkFrom();">ToDoの追加</button>
+        <button type="submit" class="add_button" onclick="return checkForm();">ToDoの追加</button>
       </div>
     </form>
   </div>

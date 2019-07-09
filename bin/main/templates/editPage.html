@@ -12,7 +12,7 @@
   <div th:replace="commons/header.html::header"></div>
   <div class="edit_area">
     <p>ToDoの内容を変更します</p>
-    <form method="post" th:action="@{/update}" th:Object="${topPage}">
+    <form method="post" th:action="@{/update}" name="create_form" th:Object="${topPage}">
       <div class="input_area">
         <table class="main">
           <tr>
@@ -24,18 +24,32 @@
           <tr>
             <td>
               <label>期限</label>
-              <input type="text" name="deadline" th:value="${toDoItem.deadline}" size="80" maxlength="100" />
+              <input type="text" name="deadline" th:value="${toDoItem.deadline}" size="80" maxlength="100" required/>
             </td>
           </tr>
         </table>
       </div>
       <div class="button_area">
-        <button type="submit" name="id" th:value="${toDoItem.id}" class="update_button">
+        <button type="submit" name="id" th:value="${toDoItem.id}" class="update_button" onclick="return checkForm();">
           ToDoの追加
         </button>
       </div>
     </form>
   </div>
 </body>
-
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  function checkForm(){
+    if(document.create_form.toDoName.value.length == 0){
+        window.alert("文字を入力してください");
+        return false;
+      }else if(31 <= document.create_form.toDoName.value.length){
+        window.alert("31文字以上を入力しないでください");
+        return false;
+      }else {
+        return true
+      }
+    }
+  /*]]>*/
+  </script>
 </html>

@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 
 import com.example.ToDoList.entities.ToDoItem;
 import com.example.ToDoList.repositories.ToDoItemRepository;
 import com.example.ToDoList.service.ToDoItemService;
-//import com.example.ToDoList.common.LogUtils;
+import com.example.ToDoList.common.LogUtils;
 
 /*
  * toDoList情報
@@ -56,11 +58,12 @@ public class TopPageController {
   }
 
   // todoの追加ボタンクリック時
-  @RequestMapping(value="/new", method=RequestMethod.POST)
-  public String newItem(ToDoItem item) {
-      item.setStatus(false);
-      this.toDoItemService.save(item);
-      return "redirect:/";
+  @RequestMapping(value="/", method=RequestMethod.POST)
+  public String newItem(ToDoItem toDoItem, Model model) {
+    toDoItem.setStatus(false);
+    toDoItemService.save(toDoItem);
+    // model.addAttribute("error","エラー");
+    return "redirect:/";
   }
 
   // 編集ボタンクリック時
@@ -99,12 +102,14 @@ public class TopPageController {
   }
 
   // 文字数チェック
-  public void check(ToDoItem toDoItem){
-    int word_count = toDoItem.getToDoName().length();
+  public String check(String name){
+    int word_count = name.length();
+    String err_messege = "";
     if(word_count == 0){
-
+      err_messege = "文字を入力してください";
     }else if(31 <= word_count){
-
+      err_messege = "31文字以上入力してください";
     }
+    return err_messege;
   }
 }
