@@ -9,15 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import javax.validation.Valid;
-import org.springframework.validation.BindingResult;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 
 import com.example.ToDoList.entities.ToDoItem;
 import com.example.ToDoList.repositories.ToDoItemRepository;
 import com.example.ToDoList.service.ToDoItemService;
-import com.example.ToDoList.common.LogUtils;
+// import com.example.ToDoList.common.LogUtils;
 
 /*
  * toDoList情報
@@ -31,12 +29,9 @@ public class TopPageController {
   @Autowired
   ToDoItemRepository repository;
 
-  // @Autowired
-  // protected ResourceLoader resourceLoader;
-
+  // トップ画面
   @RequestMapping(value="/", method=RequestMethod.GET)
-  public String displayList(Model model) {
-    //List<ToDoItem> toDoItems = this.toDoItemService.findAll();
+  public String topView(Model model) {
     List<ToDoItem> toDoItems = this.repository.findAllOrderByDateAsc();
     model.addAttribute("toDoItems", toDoItems);
     return "topPage";
@@ -49,17 +44,16 @@ public class TopPageController {
   }
 
   // 検索ボタンクリック時
-  @RequestMapping(value="/searched", method=RequestMethod.POST)
+  @RequestMapping(value="/search", method=RequestMethod.POST)
   public String searchResult(@RequestParam("search_name") String name, Model model){
     List<ToDoItem> toDoItem = this.repository.findSearchList(false, name);
-    //LogUtils.info(toDoItem.getToDoName());
     model.addAttribute("toDoItem", toDoItem);
     return "searchPage";
   }
 
   // todoの追加ボタンクリック時
   @RequestMapping(value="/", method=RequestMethod.POST)
-  public String newItem(ToDoItem toDoItem, Model model) {
+  public String addTodo(ToDoItem toDoItem, Model model) {
     toDoItem.setStatus(false);
     toDoItemService.save(toDoItem);
     return "redirect:/";
@@ -67,15 +61,15 @@ public class TopPageController {
 
   // 編集ボタンクリック時
   @RequestMapping(value="/edit", method=RequestMethod.POST)
-  public String editCard(@RequestParam("id") Integer id, Model model) {
-    ToDoItem item = this.toDoItemService.findById(id);
-    model.addAttribute("toDoItem", item);
+  public String editTodo(@RequestParam("id") Integer id, Model model) {
+    ToDoItem toDoItem = this.toDoItemService.findById(id);
+    model.addAttribute("toDoItem", toDoItem);
     return "editPage";
   }
 
   // 更新ボタンクリック時
   @RequestMapping(value="/update", method=RequestMethod.POST)
-  public String updateCard(@RequestParam("id") Integer id, @ModelAttribute ToDoItem toDoItem) {
+  public String updateTodo(@RequestParam("id") Integer id, @ModelAttribute ToDoItem toDoItem) {
     toDoItem.setId(id);
     //toDoItem.setCreated_at(settingCreated_at());
     toDoItemService.save(toDoItem);
