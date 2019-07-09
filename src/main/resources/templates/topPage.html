@@ -43,7 +43,7 @@
       <br />
       <label>期限：</label><span th:text="${item.deadline}" style="margin-bottom: 0;"></span>
       <br />
-      <label>作成日：</label><span th:text="${item.created_at}" style="margin-bottom: 0;"></span>
+      <label>作成日：</label><span th:text="${#dates.format(item.created_at, 'yyyy年MM月dd日')}" style="margin-bottom: 0;"></span>
       <br />
     </div>
     <div class="edit_area">

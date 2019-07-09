@@ -47,6 +47,7 @@ public class TopPageController {
     return "searchPage";
   }
 
+  // 検索ボタンクリック時
   @RequestMapping(value="/searched", method=RequestMethod.POST)
   public String searchResult(@RequestParam("search_name") String name, Model model){
     List<ToDoItem> toDoItem = this.repository.findSearchList(false, name);
