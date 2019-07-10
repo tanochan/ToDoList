@@ -5,9 +5,6 @@
   <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
   <link media="all" th:href="@{/css/topPage.css}" rel="stylesheet" />
   <link media="all" th:href="@{/css/header.css}" rel="stylesheet" />
-  <!-- <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.11.4/jquery-ui.min.css}" />
-    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/webjars/jquery-ui/1.11.4/jquery-ui.min.js"></script> -->
   <title>トップ画面</title>
 </head>
 
@@ -73,10 +70,10 @@
     /*<![CDATA[*/
     function checkForm() {
       if (document.create_form.toDoName.value.length == 0) {
-        window.alert("文字を入力してください");
+        window.alert("ToDo名を入力してください");
         return false;
       } else if (31 <= document.create_form.toDoName.value.length) {
-        window.alert("31文字以上を入力しないでください");
+        window.alert("ToDo名は31文字以上入力しないでください");
         return false;
       } else {
         return true

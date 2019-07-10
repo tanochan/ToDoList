@@ -41,10 +41,10 @@
   /*<![CDATA[*/
   function checkForm() {
     if (document.create_form.toDoName.value.length == 0) {
-      window.alert("文字を入力してください");
+      window.alert("ToDo名を入力してください");
       return false;
     } else if (31 <= document.create_form.toDoName.value.length) {
-      window.alert("31文字以上を入力しないでください");
+      window.alert("ToDo名は31文字以上入力しないでください");
       return false;
     } else {
       return true

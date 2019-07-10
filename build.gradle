@@ -4,6 +4,7 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -18,7 +19,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile 'org.springframework.boot:spring-boot-starter-web'
 	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	compile 'org.webjars:jquery-ui:1.11.4'
 	compileOnly 'org.projectlombok:lombok:1.16.10'
 	compile 'org.springframework.boot:spring-boot-starter-jdbc'
   compile 'mysql:mysql-connector-java:5.1.35'
