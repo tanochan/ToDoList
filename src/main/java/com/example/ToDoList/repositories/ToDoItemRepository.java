@@ -1,4 +1,4 @@
-package com.example.ToDoList.repositories;
+package com.example.todolist.repositories;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.ToDoList.entities.ToDoItem;
+import com.example.todolist.entities.ToDoItem;
 
 /**
  * JpaRepositoryを継承する事で、fineOne、findAll、save、deleteの4メソッドが使用できる

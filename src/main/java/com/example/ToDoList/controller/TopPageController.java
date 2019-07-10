@@ -1,4 +1,4 @@
-package com.example.ToDoList.controller;
+package com.example.todolist.controller;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 // import org.slf4j.Logger;
 // import org.slf4j.LoggerFactory;
 
-import com.example.ToDoList.entities.ToDoItem;
-import com.example.ToDoList.repositories.ToDoItemRepository;
-import com.example.ToDoList.service.ToDoItemService;
+import com.example.todolist.entities.ToDoItem;
+import com.example.todolist.repositories.ToDoItemRepository;
+import com.example.todolist.service.ToDoItemService;
 // import com.example.ToDoList.common.LogUtils;
 
 /*

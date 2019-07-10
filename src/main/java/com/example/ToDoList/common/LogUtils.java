@@ -1,4 +1,4 @@
-package com.example.ToDoList.common;
+package com.example.todolist.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

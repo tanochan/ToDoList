@@ -1,10 +1,10 @@
-package com.example.ToDoList.service;
+package com.example.todolist.service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
-import com.example.ToDoList.repositories.ToDoItemRepository;
-import com.example.ToDoList.entities.ToDoItem;
+import com.example.todolist.repositories.ToDoItemRepository;
+import com.example.todolist.entities.ToDoItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
