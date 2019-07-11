@@ -16,5 +16,4 @@ public class ToDoListApplication extends SpringBootServletInitializer {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(ToDoListApplication.class);
 	}
-
 }
