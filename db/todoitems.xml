@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!--
+-
+- Sequel Pro XML dump
+- バージョン 4541
+-
+- http://www.sequelpro.com/
+- https://github.com/sequelpro/sequelpro
+-
+- ホスト: 127.0.0.1 (MySQL 5.6.42)
+- データベース: todolist
+- 作成時刻 Time: 2019-07-11 05:33:05 +0000
+-
+-->
+
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="todolist">
+
+	<table_structure name="todoitems">
+		<field field="id" type="int(11) unsigned" null="NO" key="PRI" default="<null>" extra="auto_increment" />
+		<field field="todo_name" type="varchar(255)" null="YES" key="" default="" extra="" />
+		<field field="deadline" type="varchar(255)" null="YES" key="" default="<null>" extra="" />
+		<field field="status" type="tinyint(1)" null="YES" key="" default="<null>" extra="" />
+		<field field="created_at" type="timestamp" null="NO" key="" default="CURRENT_TIMESTAMP" extra="" />
+
+		<options name="todoitems" engine="InnoDB" version="10" row_format="Compact" rows="3" avg_row_length="5461" data_length="16384" max_data_length="0" index_length="0" data_free="0" create_time="2019-07-11 14:23:57" update_time="<null>" collation="utf8_general_ci" create_options="" comment="" />
+	</table_structure>
+
+	<table_data name="todoitems">
+
+	<row>
+		<field name="id">92</field>
+		<field name="todo_name">JavaでWebアプリ開発</field>
+		<field name="deadline">2019年8月22日</field>
+		<field name="status">0</field>
+		<field name="created_at">2019-07-11 14:16:11</field>
+	</row>
+
+	<row>
+		<field name="id">93</field>
+		<field name="todo_name">(更新)Pythonで機械学習</field>
+		<field name="deadline">(更新)2019年7月22日</field>
+		<field name="status">0</field>
+		<field name="created_at">2019-07-11 14:18:32</field>
+	</row>
+
+	<row>
+		<field name="id">94</field>
+		<field name="todo_name">Node.jsでWebアプリ開発</field>
+		<field name="deadline">2019年11月6日</field>
+		<field name="status">1</field>
+		<field name="created_at">2019-07-11 14:17:51</field>
+	</row>
+
+	</table_data>
+
+</database>
+</mysqldump>
